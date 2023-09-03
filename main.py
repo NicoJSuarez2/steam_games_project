@@ -131,4 +131,4 @@ def sentiment_analysis(anio: int):
                 'Reseñas Negativas' : int(filtered_df.iloc[0,1]),
                 'Reseñas Neutras' : int(filtered_df.iloc[0,2]),
                 'Reseñas Positivas' : int(filtered_df.iloc[0,3])}
-    return filtered_df
+    return response
