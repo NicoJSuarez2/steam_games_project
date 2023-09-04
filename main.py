@@ -153,6 +153,9 @@ def sentiment_analysis(anio: int):
 
 @app.get("/recomendacion_juego/{id_producto}")
 def recommend(id_jueguito:int):
+    '''
+    Recomienda 5 juegos segun el juego que vos le digas!
+    '''
     game_index = df_ML[df_ML["item_id"]==id_jueguito].index[0]
     distances = similarity[game_index]
     games_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x:x[1])[1:6]
