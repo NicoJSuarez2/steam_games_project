@@ -157,6 +157,10 @@ def recommend(id_jueguito):
     distances = similarity[game_index]
     games_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x:x[1])[1:6]
     
-    for i in games_list:
-        print(df_ML.iloc[i[0]].title)
-        return None
+    respon = {"primera recmendacion":df_ML.iloc[0[0]].title,
+     "segunda recmendacion":df_ML.iloc[1[0]].title,
+     "tercera recmendacion":df_ML.iloc[2[0]].title,
+     "cuarta recmendacion":df_ML.iloc[3[0]].title,
+     "quinta recmendacion":df_ML.iloc[4[0]].title}
+        
+    return respon
