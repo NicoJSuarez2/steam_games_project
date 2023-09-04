@@ -6,10 +6,26 @@ df_genre = pd.read_csv(r"data_api/genre.csv")
 df_userforgenre = pd.read_csv(r"data_api/userforgenre.csv",index_col=0)
 df_developer = pd.read_csv(r"data_api/developer.csv",index_col=0)
 df_sentiment_analysis = pd.read_csv(r"data_api/sentiment_analysis.csv")
+df_ML = pd.read_csv(r"data_api\datos_ML.csv", index_col=False)
+from sklearn.feature_extraction.text import CountVectorizer
+cv = CountVectorizer(max_features=200, stop_words="english")
+from nltk.stem.porter import PorterStemmer
+from sklearn.metrics.pairwise import cosine_similarity
+ps = PorterStemmer()
     
 app = FastAPI()
 
+def stem(text):
+    y=[]
+    for i in text.split():
+        y.append(ps.stem(i))
+    return " ".join(y)
+vectors = cv.fit_transform(df_ML["tags"]).toarray()
+df_ML["tags"] = df_ML["tags"].apply(stem)
+similarity =  cosine_similarity(vectors)
 
+
+cosine_similarity(vectors)
 
 @app.get("/userdata/{User_id}")
 def userdata(User_id:str):
@@ -132,3 +148,15 @@ def sentiment_analysis(anio: int):
                 'Reseñas Neutras' : int(filtered_df.iloc[0,2]),
                 'Reseñas Positivas' : int(filtered_df.iloc[0,3])}
     return response
+
+
+
+@app.get("/recomendacion_juego/{id_producto}")
+def recommend(id_jueguito):
+    game_index = df_ML[df_ML["item_id"]==id_jueguito].index[0]
+    distances = similarity[game_index]
+    games_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x:x[1])[1:6]
+    
+    for i in games_list:
+        print(df_ML.iloc[i[0]].title)
+        return None
