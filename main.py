@@ -152,15 +152,14 @@ def sentiment_analysis(anio: int):
 
 
 @app.get("/recomendacion_juego/{id_producto}")
-def recommend(id_jueguito):
+def recommend(id_jueguito:int):
     game_index = df_ML[df_ML["item_id"]==id_jueguito].index[0]
     distances = similarity[game_index]
     games_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x:x[1])[1:6]
-    
-    respon = {"primera recmendacion":df_ML.iloc[0[0]].title,
-     "segunda recmendacion":df_ML.iloc[1[0]].title,
-     "tercera recmendacion":df_ML.iloc[2[0]].title,
-     "cuarta recmendacion":df_ML.iloc[3[0]].title,
-     "quinta recmendacion":df_ML.iloc[4[0]].title}
+
+    respon = {"tu juego es" : df_ML[df_ML["item_id"]==id_jueguito].iloc[0,1],
+            "recomendaciones": []}
+    for i in games_list:
+        respon["recomendaciones"].append(df_ML.iloc[i[0]].title)
         
     return respon
