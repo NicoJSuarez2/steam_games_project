@@ -130,7 +130,7 @@ def sentiment_analysis(anio: int):
     '''
      Según el año de lanzamiento, se devuelve una lista con la cantidad de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento.
     '''
-    filtered_df = df_sentiment_analysis.query(f"release_date == '{anio}'")
+    filtered_df = df_sentiment_analysis.query(f"release_date == {anio}")
     response = {'Año de lanzamiento' : int(filtered_df.iloc[0,0]),
                 'Reseñas Negativas' : int(filtered_df.iloc[0,1]),
                 'Reseñas Neutras' : int(filtered_df.iloc[0,2]),
