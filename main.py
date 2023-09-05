@@ -138,6 +138,7 @@ def sentiment_analysis(anio: int):
 
 
 
-@app.get("/recomendacion_juego/{id_producto}")
-def recommend(id_producto:int):
-    return recommend(id_producto)
+@app.get("/recommend/{id_producto}")
+async def recommend(id_producto:int):
+    respon = recommend(id_producto)
+    return respon
