@@ -13,7 +13,7 @@ df_ML = pd.read_csv(r"data_api\datos_ML.csv")
 def recommend(id_jueguito):
     try:
         df_ML_reduced = pd.read_csv(r"data_api\datos_ML_reduced.csv")
-        
+        df_ML = pd.read_csv(r"data_api\datos_ML.csv")
         similarity = joblib.load('modelo_entrenado.pkl')
         idx = df_ML_reduced[df_ML_reduced["item_id"] == id_jueguito].index[0]
         distances = similarity[idx]   
@@ -26,6 +26,8 @@ def recommend(id_jueguito):
     
     except IndexError:    
 
+        df_ML_reduced = pd.read_csv(r"data_api\datos_ML_reduced.csv")
+        df_ML = pd.read_csv(r"data_api\datos_ML.csv")
         new_game = df_ML[df_ML["item_id"] == id_jueguito]
         df_combined = pd.concat([df_ML,new_game])
         vectors = cv.fit_transform(df_combined["tags"]).toarray()
