@@ -140,6 +140,11 @@ def sentiment_analysis(anio: int):
 
 @app.get("/recommend/{id_producto}")
 async def get_recommendations(id_producto: int):
+    '''
+    Algoritmo basado en coseno de similitud.
+    Ingrese el id de su juego favorito y le recomendamos 5 distintos para que pruebe.
+    
+    '''
     return recommend(id_producto)
 
 
