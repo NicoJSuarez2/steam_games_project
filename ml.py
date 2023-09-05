@@ -12,6 +12,7 @@ df_ML = pd.read_csv(r"data_api\datos_ML.csv")
 #dentro de los try y except no se puede llamar a variables externas a la funcion por o que me veo forzado a correr siempre la carga del modelo.
 def recommend(id_jueguito):
     try:
+        df_ML_reduced = pd.read_csv(r"data_api\datos_ML_reduced.csv")
         
         similarity = joblib.load('modelo_entrenado.pkl')
         idx = df_ML_reduced[df_ML_reduced["item_id"] == id_jueguito].index[0]
