@@ -78,6 +78,12 @@ def genre(Genero:str):
                 "Total de horas registradas":int(filtered_df.iloc[0,1])}
     return response
 
+@app.get("/recommend/{id_producto}")
+async def recommend(id_producto:int):
+    respon = recommend(id_producto)
+    return respon
+
+
 @app.get("/userforgenre/{Genero}")
 def userforgenre(Genero:str):
     '''
@@ -138,7 +144,3 @@ def sentiment_analysis(anio: int):
 
 
 
-@app.get("/recommend/{id_producto}")
-async def recommend(id_producto:int):
-    respon = recommend(id_producto)
-    return respon
