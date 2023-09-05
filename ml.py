@@ -11,12 +11,20 @@ df_ML = pd.read_csv(r"data_api\datos_ML.csv")
 #esta es la funcion con la que implementariamos el modelo, como vemo hacer unas recomendaciones bastantes acertadas sin caer en la reduncancia.
 #dentro de los try y except no se puede llamar a variables externas a la funcion por o que me veo forzado a correr siempre la carga del modelo.
 def recommend(id_jueguito):
+    #como usamos un modelo preentrenado, para una parte de los juegos la recomendacion va a ser casi instantanea.
+    #para otros juegos tarda, por que tenemos que volver a entrenar el modelo.
     try:
+        #cargamos el df dentro de la funcion 
         df_ML_reduced = pd.read_csv(r"data_api\datos_ML_reduced.csv")
+        #importamos el modelo ya entrenado
         similarity = joblib.load('modelo_entrenado.pkl')
+        #buscamos el numero de indice
         idx = df_ML_reduced[df_ML_reduced["item_id"] == id_jueguito].index[0]
-        distances = similarity[idx]   
+        #y lo comparamos dentro del modelo
+        distances = similarity[idx]
+        #determinamos nuestras similitudes mas grandes y lo guardamos dentro de una lista   
         jueguito = sorted(list(enumerate(distances)), reverse=True, key= lambda x:x[1])[1:6]
+        #guardamos dentro de una lista con este iterador las recomendaciones
         respon = []
         for i in jueguito:
             respon.append(df_ML_reduced.iloc[i[0]].title)
