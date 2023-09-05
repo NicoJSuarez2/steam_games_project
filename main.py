@@ -1,31 +1,18 @@
 from fastapi import FastAPI
 import pandas as pd
+import joblib
+from ml import recommend
 df_userdata = pd.read_csv(r"data_api/user_data.csv",index_col=0)
 df_countreviews = pd.read_csv(r"data_api/count_reviews.csv",index_col=0)
 df_genre = pd.read_csv(r"data_api/genre.csv")
 df_userforgenre = pd.read_csv(r"data_api/userforgenre.csv",index_col=0)
 df_developer = pd.read_csv(r"data_api/developer.csv",index_col=0)
 df_sentiment_analysis = pd.read_csv(r"data_api/sentiment_analysis.csv")
-df_ML = pd.read_csv(r"data_api\datos_ML.csv", index_col=False)
-from sklearn.feature_extraction.text import CountVectorizer
-cv = CountVectorizer(max_features=200, stop_words="english")
-from nltk.stem.porter import PorterStemmer
-from sklearn.metrics.pairwise import cosine_similarity
-ps = PorterStemmer()
-    
+
+
+
 app = FastAPI()
 
-def stem(text):
-    y=[]
-    for i in text.split():
-        y.append(ps.stem(i))
-    return " ".join(y)
-vectors = cv.fit_transform(df_ML["tags"]).toarray()
-df_ML["tags"] = df_ML["tags"].apply(stem)
-similarity =  cosine_similarity(vectors)
-
-
-cosine_similarity(vectors)
 
 @app.get("/userdata/{User_id}")
 def userdata(User_id:str):
@@ -152,17 +139,5 @@ def sentiment_analysis(anio: int):
 
 
 @app.get("/recomendacion_juego/{id_producto}")
-def recommend(id_jueguito:int):
-    '''
-    Recomienda 5 juegos segun el juego que vos le digas!
-    '''
-    game_index = df_ML[df_ML["item_id"]==id_jueguito].index[0]
-    distances = similarity[game_index]
-    games_list = sorted(list(enumerate(distances)), reverse=True, key=lambda x:x[1])[1:6]
-
-    respon = {"tu juego es" : df_ML[df_ML["item_id"]==id_jueguito].iloc[0,1],
-            "recomendaciones": []}
-    for i in games_list:
-        respon["recomendaciones"].append(df_ML.iloc[i[0]].title)
-        
-    return respon
+def recommend(id_producto:int):
+    return recommend(id_producto)
