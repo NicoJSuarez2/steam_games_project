@@ -1,7 +1,7 @@
 from fastapi import FastAPI
 import pandas as pd
 import joblib
-from ml import recommend
+from script_ML import recommend
 df_userdata = pd.read_csv(r"data_api/user_data.csv",index_col=0)
 df_countreviews = pd.read_csv(r"data_api/count_reviews.csv",index_col=0)
 df_genre = pd.read_csv(r"data_api/genre.csv")
@@ -49,25 +49,45 @@ def genre(genre:str):
     Los diferentes generos son:
     
     Action
+    
     Adventure
+    
     Animation and Modeling
+    
     Audio Production
+    
     Casual
+    
     Design and Illustration
+    
     Early Access
+    
     Education
+    
     Free to Play
+    
     Indie
+    
     Massively Multiplayer
+    
     Photo Editing
+    
     RPG
+    
     Racing
+    
     Simulation
+    
     Software Training
+    
     Sports
+    
     Strategy
+    
     Utilities
+    
     Video Production
+    
     Web Publishing
 
     
@@ -86,25 +106,45 @@ def userforgenre(genre:str):
     Los diferentes generos son:
     
     Action
+    
     Adventure
+    
     Animation and Modeling
+    
     Audio Production
+    
     Casual
+    
     Design and Illustration
+    
     Early Access
+    
     Education
+    
     Free to Play
+    
     Indie
+    
     Massively Multiplayer
+    
     Photo Editing
+    
     RPG
+    
     Racing
+    
     Simulation
+    
     Software Training
+    
     Sports
+    
     Strategy
+    
     Utilities
+    
     Video Production
+    
     Web Publishing
     
     '''
