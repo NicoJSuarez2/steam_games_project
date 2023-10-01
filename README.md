@@ -131,11 +131,11 @@ Es importante mensionar que se pone como punto extra el deploy de la API con tod
 Este EDA será dirigido principalmente a encontrar la calidad de los datos que se nos entregan, tiene como objetivo principal la exploracion a un nivel tecnico. Lo primero que se nota es que todos los conjuntos de datos no estan en condiciones de ser utilizados por lo que lo primero que planteo es realizar transformaciones en etapas.
 
 La primer etapa será dirigida a desanidar aquellos diccionarios que se encuentran en 2 de mis 3 conjuntos de datos, poniendo cada categoría en un respectiva columna y por ultimo, exportando estos datos a un formato mas trabajable. 
-[(INSERTAR IMAGEN EDA 1)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/API%201.jpg)
+![(INSERTAR IMAGEN EDA 1)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/EDA%201.jpg)
 
 La segunda etapa será dirigida a encontrar la integridad de los datos. Para ello creo y utilizo una funcion que me permite analizar las columnas por separado, encontrar el numero de valores nulos y determinar a que porcentaje del total de los datos representan esos valores nulos.
 
-(INSERTAR IMAGEN EDA 2)
+[!(INSERTAR IMAGEN EDA 2)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/EDA%202.jpg)
 
 El objetivo a llegar de esta etapa es el de imputar todos los valores faltantes utilizando el criterio, para esto se utiliza imputadores, conocimiento en el negocio, etc.
 Se busca no perder informacion que pueda llegar a ser reelevante, solo eliminar registros que sean inumputables y finalizar con cada df con 0% de nulos. Este trabajo se puede ver en *EDA.ipynb*.
@@ -158,17 +158,17 @@ Para este caso necesitamos sacar el precio del producto de un dataframe, las rec
 
 
 
-INSERTAR IMAGEN API 1 s
+![(INSERTAR IMAGEN API1)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/API%201.jpg)
 
 De esta manera cosigo reducir el total de 700Mb  a aproximadamente 60Mb, y logrando una respuesta inmediata tanto en mi servicio "render" como en local. Tambien estoy simplificando extremnadamente el codigo de cada endpoint, como vemos es practicamente una sola linea de codigo por funcion. 
 
 ###### Puede seguirlo en el archivo main.py
-INSERTAR IMAGEN API2 
+![INSERTAR IMAGEN API2 ](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/API%202.jpg)
 
 
 Por ultimo, para la realizacion de la API decido utilizar FastAPI, ya que nos da varias ventajas. Entre ellas que podemos probarla de forma local a y ver los cambios en tiempo real. Por otra parte nos genera Documentacion de la API y la posibilidad de probar cada endpoint. 
 
-INSERTAR IMAGEN API 3
+![INSERTAR IMAGEN API 3](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/API%203.jpg)
 
 > *Si desea probar la API a travez de su documentacion puede hacerlo ingresando al siguiente Link:*
 >
@@ -187,18 +187,18 @@ Para ello, mis variables fueron:
    - El Developer.
    - El precio del juego.
 
-(INSERTAR ML 1)
+![(INSERTAR ML 1)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/ML%201.jpg)
 
 - **Del dataframe user_reviews:**
    - Una sumatoria de la cantidad de recomendaciones que recibio el juego
    - Un promedio de los refiews (utilizando el analizador de sentimientos)
    - La combinacion de estas dos columnas a travez del "scaling" (normalizacion de variables), generandole un score.
 
-INSERTAR ML 2
+![INSERTAR ML 2](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/ML2.jpg)
 
 Como resultante tengo obtengo este DartaFrame:
 
-INSERTAR ML 3
+![INSERTAR ML 3](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/ML%203.jpg)
 
 
 Para la realizacion de este modelo 
@@ -219,13 +219,14 @@ Para la implementacion de este modelo se tuvieron en cuenta varios hiper-paramet
 De todas maneras siempre se esta abierto a optimizar hiperparametros en el futuro, una vez testeado el modelo con el publico genenal.
 
 
-INSERTAR ML 5
+![INSERTAR ML 5](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/ML%205.jpg)
 
 Teniendo en cuenta las limitaciones que tiene el host de nuestra API, se tuvieron en cuenta 2 posibles escenarios:
 
 - **El Id ingresado esta dentro de nuestro modelo originario.** En tal caso la respuesta sería automatica y no sería distinto de buscar las recomendaciones en un dataframe con todas las posibilidades. Sería el caso ideal en el que el costo computacional se veria reducido a una simple consulta
 
 - **El Id ingresado no esta dentro de nuestro modelo originario.** En este caso suponemos que el usuario ingresa in Id que no teniamos contemplado en el modelo por lo que al no encontrarlo en nuestro modelo ya entrenado, nos vemos forzados a la realizacion del calculo completo.
+![INSERTAR ML 5](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/ML%204.jpg)
 
 
 
