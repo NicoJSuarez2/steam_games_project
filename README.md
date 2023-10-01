@@ -131,7 +131,7 @@ Es importante mensionar que se pone como punto extra el deploy de la API con tod
 Este EDA será dirigido principalmente a encontrar la calidad de los datos que se nos entregan, tiene como objetivo principal la exploracion a un nivel tecnico. Lo primero que se nota es que todos los conjuntos de datos no estan en condiciones de ser utilizados por lo que lo primero que planteo es realizar transformaciones en etapas.
 
 La primer etapa será dirigida a desanidar aquellos diccionarios que se encuentran en 2 de mis 3 conjuntos de datos, poniendo cada categoría en un respectiva columna y por ultimo, exportando estos datos a un formato mas trabajable. 
-(INSERTAR IMAGEN EDA 1)
+[(INSERTAR IMAGEN EDA 1)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/API%201.jpg)
 
 La segunda etapa será dirigida a encontrar la integridad de los datos. Para ello creo y utilizo una funcion que me permite analizar las columnas por separado, encontrar el numero de valores nulos y determinar a que porcentaje del total de los datos representan esos valores nulos.
 
