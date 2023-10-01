@@ -135,7 +135,7 @@ La primer etapa será dirigida a desanidar aquellos diccionarios que se encuentr
 
 La segunda etapa será dirigida a encontrar la integridad de los datos. Para ello creo y utilizo una funcion que me permite analizar las columnas por separado, encontrar el numero de valores nulos y determinar a que porcentaje del total de los datos representan esos valores nulos.
 
-[!(INSERTAR IMAGEN EDA 2)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/EDA%202.jpg)
+![(INSERTAR IMAGEN EDA 2)](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/EDA%202.jpg)
 
 El objetivo a llegar de esta etapa es el de imputar todos los valores faltantes utilizando el criterio, para esto se utiliza imputadores, conocimiento en el negocio, etc.
 Se busca no perder informacion que pueda llegar a ser reelevante, solo eliminar registros que sean inumputables y finalizar con cada df con 0% de nulos. Este trabajo se puede ver en *EDA.ipynb*.
