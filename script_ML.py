@@ -20,10 +20,10 @@ def recommend(id_item):
         #y lo comparamos dentro del modelo
         distances = similarity[idx]
         #determinamos nuestras similitudes mas grandes y lo guardamos dentro de una lista   
-        jueguito = sorted(list(enumerate(distances)), reverse=True, key= lambda x:x[1])[1:6]
+        recomendations = sorted(list(enumerate(distances)), reverse=True, key= lambda x:x[1])[1:6]
         #guardamos dentro de una lista con este iterador las recomendaciones
         respon = []
-        for i in jueguito:
+        for i in recomendations:
             respon.append(df_ML_reduced.iloc[i[0]].title)
         return {"recomendaciones": respon}
     
@@ -44,10 +44,10 @@ def recommend(id_item):
         
         distances = similarity[idx]   
         
-        jueguito = sorted(list(enumerate(distances)), reverse=True, key= lambda x:x[1])[1:6]
+        recomendations = sorted(list(enumerate(distances)), reverse=True, key= lambda x:x[1])[1:6]
         
         respon = []
-        for i in jueguito:
+        for i in recomendations:
             respon.append(df_combined.iloc[i[0]].title)
         return {"recomendaciones": respon}
     
