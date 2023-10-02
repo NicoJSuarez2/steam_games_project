@@ -105,7 +105,7 @@ Para este proyecto, se nos presentó el siguiente contexto:
 
 - **desarroto_ML.ipynb** : Donde se muestra el proceso que se siguió para la realizacion del modelo de Machine Learning
 
-- **main.py** : Scrip de Python donde se desarroya la API.
+- **main.py** : Scrip de Python donde se desarrolla la API.
 
 - **script_ML.py** : script que se utiliza para realizar las recomendaciones.
 
@@ -113,7 +113,7 @@ Para este proyecto, se nos presentó el siguiente contexto:
 
 ---
 
-## En el desarroyo del proyecto se realizará de la siguiente manera:
+## En el desarrollo del proyecto se realizará de la siguiente manera:
 
 
 - ### **Objetivos y alcances**: 
@@ -199,7 +199,7 @@ Como resultante tengo obtengo este DartaFrame:
 ![INSERTAR ML 3](https://github.com/gomezgaston/steam_games_project/blob/main/imagenes/ML%203.jpg)
 
 
-Para la realización de este modelo, puede seguir el proceso detallado en el archivo **desarroyo_ML.ipynb**.
+Para la realización de este modelo, puede seguir el proceso detallado en el archivo **desarrollo_ML.ipynb**.
 
 Utilizamos un dataframe que contiene los registros de los 2000 juegos con las mejores puntuaciones. Esto nos permite abordar dos cuestiones importantes:
 
