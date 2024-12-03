@@ -12,7 +12,7 @@ def recommend(id_item):
     #para otros juegos tarda, por que tenemos que volver a entrenar el modelo.
     try:
         #cargamos el df dentro de la funcion 
-        df_ML_reduced = pd.read_csv(r"data_api\datos_ML_reduced.csv")
+        df_ML_reduced = pd.read_csv(r"data_api\datos_ML_reduced.csv", low_memory=False)
         #importamos el modelo ya entrenado
         similarity = joblib.load('modelo_entrenado.pkl')
         #buscamos el numero de indice

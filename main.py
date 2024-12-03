@@ -2,12 +2,12 @@ from fastapi import FastAPI
 import pandas as pd
 import joblib
 from script_ML import recommend
-df_userdata = pd.read_csv(r"data_api/user_data.csv",index_col=0)
-df_countreviews = pd.read_csv(r"data_api/count_reviews.csv",index_col=0)
-df_genre = pd.read_csv(r"data_api/genre.csv")
-df_userforgenre = pd.read_csv(r"data_api/userforgenre.csv",index_col=0)
-df_developer = pd.read_csv(r"data_api/developer.csv",index_col=0)
-df_sentiment_analysis = pd.read_csv(r"data_api/sentiment_analysis.csv")
+df_userdata = pd.read_csv(r"data_api/user_data.csv",index_col=0,low_memory=False)
+df_countreviews = pd.read_csv(r"data_api/count_reviews.csv",index_col=0,low_memory=False)
+df_genre = pd.read_csv(r"data_api/genre.csv",low_memory=False)
+df_userforgenre = pd.read_csv(r"data_api/userforgenre.csv",index_col=0,low_memory=False)
+df_developer = pd.read_csv(r"data_api/developer.csv",index_col=0,low_memory=False)  
+df_sentiment_analysis = pd.read_csv(r"data_api/sentiment_analysis.csv",low_memory=False)
 
 
 
@@ -48,7 +48,7 @@ def genre(genre:str):
     Devuelve el puesto en el que se encuentra un género sobre el ranking de los generos mas jugados de steam.
     Los diferentes generos son:
     
-    Action
+    Actionf
     
     Adventure
     
